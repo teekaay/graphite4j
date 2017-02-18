@@ -1,8 +1,7 @@
 package de.teekaay.graphite;
 
+import de.teekaay.graphite.consumer.GraphiteConsumptionException;
 import de.teekaay.graphite.timeseries.GraphiteTimeSeries;
-
-import java.io.IOException;
 
 public interface IGraphiteConsumer {
     /**
@@ -12,7 +11,7 @@ public interface IGraphiteConsumer {
      * @param path The path to the resource
      * @return The time series
      */
-    GraphiteTimeSeries get(String path) throws IOException;
+    GraphiteTimeSeries get(String path) throws GraphiteConsumptionException;
 
     /**
      * Returns true if the resource is supported, otherwise false.

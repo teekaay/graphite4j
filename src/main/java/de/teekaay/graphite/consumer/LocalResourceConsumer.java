@@ -8,19 +8,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class LocalResourceConsumer implements IGraphiteConsumer {
+public class LocalResourceConsumer extends AbstractConsumer implements IGraphiteConsumer {
     private static final String CLASSPATH_SCHEMA = "classpath://";
-    private IGraphiteResponseEncoder encoder;
 
     public LocalResourceConsumer(final IGraphiteResponseEncoder encoder) {
-        this.encoder = encoder;
+        super(encoder);
     }
 
     @Override
-    public GraphiteTimeSeries get(final String path) {
+    public GraphiteTimeSeries get(final String path) throws GraphiteConsumptionException {
         String realPath = path.replace(CLASSPATH_SCHEMA, "");
         File file = getFileFromResources(realPath);
-        return encoder.encode(parseFile(file));
+        return getEncoder().encode(parseFile(file));
     }
 
     @Override
@@ -33,7 +32,7 @@ public class LocalResourceConsumer implements IGraphiteConsumer {
         return new File(classLoader.getResource(path).getFile());
     }
 
-    private String parseFile(final File file) {
+    private String parseFile(final File file) throws GraphiteConsumptionException {
         StringBuilder result = new StringBuilder();
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
@@ -42,7 +41,7 @@ public class LocalResourceConsumer implements IGraphiteConsumer {
             }
             scanner.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new GraphiteConsumptionException(String.format("Could not parse file %s: %s", file.getAbsolutePath(), e.getLocalizedMessage()));
         }
         return result.toString();
     }

@@ -10,24 +10,21 @@ import java.nio.file.Paths;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class LocalFileConsumer implements IGraphiteConsumer {
+public class LocalFileConsumer extends AbstractConsumer implements IGraphiteConsumer {
     private static final String FILE_SCHEMA = "file://";
-    private IGraphiteResponseEncoder encoder;
 
     public LocalFileConsumer(final IGraphiteResponseEncoder encoder) {
-        this.encoder = encoder;
+        super(encoder);
     }
 
     @Override
-    public GraphiteTimeSeries get(final String path) throws IOException {
-        //String realPath = path.replace(FILE_SCHEMA, "");
+    public GraphiteTimeSeries get(final String path) throws GraphiteConsumptionException {
         String realPath = path;
         try (Stream<String> stream = Files.lines(Paths.get(realPath))) {
             String result = stream.collect(Collectors.joining("\n"));
-            return encoder.encode(result);
+            return getEncoder().encode(result);
         } catch (IOException e) {
-            e.printStackTrace();
-            throw e;
+            throw new GraphiteConsumptionException(String.format("Could not find or parse %s: %s", path, e.getLocalizedMessage()));
         }
     }
 
