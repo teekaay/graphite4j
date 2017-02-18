@@ -1,6 +1,7 @@
 package de.teekaay.graphite;
 
 public class GraphiteQuery {
+    private static final String TEMPLATE = "from=%s&until=%s&target=%s&format=%s";
     private String target;
     private String from;
     private String until;
@@ -18,7 +19,7 @@ public class GraphiteQuery {
     }
 
     public String render() {
-        return String.format("from=%s&until=%s&target=%s&format=%s", from, until, target, format);
+        return String.format(TEMPLATE, from, until, target, format);
     }
 
     public String getTarget() {
