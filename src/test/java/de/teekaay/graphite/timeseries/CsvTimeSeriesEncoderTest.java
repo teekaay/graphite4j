@@ -22,4 +22,16 @@ public class CsvTimeSeriesEncoderTest {
         assertEquals(1.0, (double)timeSeries.getEntries().get(0).getValue(), 0.001);
         assertEquals(2.0, (double)timeSeries.getEntries().get(1).getValue(), 0.001);
     }
+
+    @Test
+    public void itOmitsIncompleteLines() {
+        // given
+        String content = "entries,2011-07-28 01:53:00,\n" +
+                         "entries,2011-07-28 01:54:00,2.0";
+        CsvTimeSeriesEncoder encoder = new CsvTimeSeriesEncoder();
+        // when
+        GraphiteTimeSeries timeSeries = encoder.encode(content);
+        // then
+        assertEquals(1, timeSeries.getEntries().size());
+    }
 }
