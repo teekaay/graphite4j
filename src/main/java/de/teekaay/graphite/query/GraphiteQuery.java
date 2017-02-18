@@ -1,6 +1,8 @@
 package de.teekaay.graphite.query;
 
-public class GraphiteQuery {
+import de.teekaay.graphite.IGraphiteQuery;
+
+public class GraphiteQuery implements IGraphiteQuery {
     private static final String TEMPLATE = "from=%s&until=%s&target=%s&format=%s";
     private String target;
     private String from;

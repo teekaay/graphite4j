@@ -1,6 +1,8 @@
 package de.teekaay.graphite.query;
 
-public class PreparedGraphiteQuery {
+import de.teekaay.graphite.IGraphiteQuery;
+
+public class PreparedGraphiteQuery implements IGraphiteQuery {
     private String query;
 
     public PreparedGraphiteQuery(String query) {

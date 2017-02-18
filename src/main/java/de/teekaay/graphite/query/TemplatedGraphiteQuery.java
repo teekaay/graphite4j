@@ -1,12 +1,13 @@
 package de.teekaay.graphite.query;
 
 
+import de.teekaay.graphite.IGraphiteQuery;
 import org.apache.commons.lang3.text.StrSubstitutor;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class TemplatedGraphiteQuery {
+public class TemplatedGraphiteQuery implements IGraphiteQuery {
     public static final String DEFAULT_TEMPLATE = "from=${from}&until=${until}&target=${target}&format=${format}";
     public static final Map<String, String> DEFAULT_VARIABLES = new HashMap<>();
     public static final String PARAM_FROM = "from";
