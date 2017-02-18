@@ -1,6 +1,7 @@
 package de.teekaay.graphite.util;
 
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
 public class GraphiteTime {
@@ -16,6 +17,10 @@ public class GraphiteTime {
 
     public static String convertToGraphiteDate(LocalDateTime date, String pattern) {
         return date.format(DateTimeFormatter.ofPattern(pattern));
+    }
+
+    public static Long convertFromGraphiteDate(String date) {
+        return LocalDateTime.parse(date.replace(" ", "T")).toEpochSecond(ZoneOffset.UTC);
     }
 
     public static String timeAgo(int time, String unit) {
