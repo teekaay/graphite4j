@@ -13,6 +13,10 @@ public class GraphiteQuery {
         this.format = format;
     }
 
+    public GraphiteQuery() {
+        this("", "", "", "");
+    }
+
     public String render() {
         return String.format("from=%s&until=%s&target=%s&format=%s", from, until, target, format);
     }
