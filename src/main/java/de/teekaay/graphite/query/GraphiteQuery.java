@@ -1,4 +1,4 @@
-package de.teekaay.graphite;
+package de.teekaay.graphite.query;
 
 public class GraphiteQuery {
     private static final String TEMPLATE = "from=%s&until=%s&target=%s&format=%s";

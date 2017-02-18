@@ -1,5 +1,6 @@
-package de.teekaay.graphite;
+package de.teekaay.graphite.query;
 
+import de.teekaay.graphite.query.GraphiteQuery;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

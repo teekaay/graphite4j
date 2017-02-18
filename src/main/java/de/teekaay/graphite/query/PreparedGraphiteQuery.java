@@ -1,4 +1,4 @@
-package de.teekaay.graphite;
+package de.teekaay.graphite.query;
 
 public class PreparedGraphiteQuery {
     private String query;

@@ -1,4 +1,4 @@
-package de.teekaay.graphite;
+package de.teekaay.graphite.query;
 
 
 import org.apache.commons.lang3.text.StrSubstitutor;
