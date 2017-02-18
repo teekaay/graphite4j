@@ -3,7 +3,7 @@ package de.teekaay.graphite.util;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class GraphiteDateUtils {
+public class GraphiteTime {
     public static final String HHMM_YYMMDD = "hhmm_yyyyMMdd";
     public static final String UNIT_HOURS = "h";
     public static final String UNIT_DAYS = "d";

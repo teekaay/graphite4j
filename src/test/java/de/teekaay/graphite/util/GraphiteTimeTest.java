@@ -6,14 +6,14 @@ import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 
-public class GraphiteDateUtilsTest {
+public class GraphiteTimeTest {
     @Test
     public void itConvertsToHHMM_YYMMDD() throws Exception {
         // given
         String expected = "1000_20161010";
         LocalDateTime dateTime = LocalDateTime.of(2016, 10, 10, 10, 0);
         // when
-        String converted = GraphiteDateUtils.convertToHMYMD(dateTime);
+        String converted = GraphiteTime.convertToHMYMD(dateTime);
         // then
         assertEquals(expected, converted);
     }
@@ -24,7 +24,7 @@ public class GraphiteDateUtilsTest {
         int hours = 1;
         String expected = "-1h";
         // when
-        String ago = GraphiteDateUtils.timeAgo(hours, "h");
+        String ago = GraphiteTime.timeAgo(hours, "h");
         // then
         assertEquals(expected, ago);
     }
