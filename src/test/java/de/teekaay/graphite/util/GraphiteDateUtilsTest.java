@@ -17,4 +17,15 @@ public class GraphiteDateUtilsTest {
         // then
         assertEquals(expected, converted);
     }
+
+    @Test
+    public void itReturnsMinus1h() throws Exception {
+        // given
+        int hours = 1;
+        String expected = "-1h";
+        // when
+        String ago = GraphiteDateUtils.timeAgo(hours, "h");
+        // then
+        assertEquals(expected, ago);
+    }
 }
