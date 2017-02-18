@@ -4,6 +4,7 @@ import de.teekaay.graphite.IGraphiteQuery;
 
 public class GraphiteQuery implements IGraphiteQuery {
     private static final String TEMPLATE = "from=%s&until=%s&target=%s&format=%s";
+
     private String target;
     private String from;
     private String until;
@@ -14,10 +15,6 @@ public class GraphiteQuery implements IGraphiteQuery {
         this.from = from;
         this.until = until;
         this.format = format;
-    }
-
-    public GraphiteQuery() {
-        this("", "", "", "");
     }
 
     public String render() {

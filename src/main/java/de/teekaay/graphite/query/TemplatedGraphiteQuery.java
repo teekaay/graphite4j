@@ -44,5 +44,31 @@ public class TemplatedGraphiteQuery implements IGraphiteQuery {
         variables.put(key, value);
         return this;
     }
+
+    public String getTemplate() {
+        return template;
+    }
+
+    public TemplatedGraphiteQuery setTemplate(final String template) {
+        this.template = template;
+        return this;
+    }
+
+    public Map<String, String> getVariables() {
+        return variables;
+    }
+
+    public TemplatedGraphiteQuery setVariables(final Map<String, String> variables) {
+        this.variables = variables;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "TemplatedGraphiteQuery{" +
+                "template='" + template + '\'' +
+                ", variables=" + variables +
+                '}';
+    }
 }
 
