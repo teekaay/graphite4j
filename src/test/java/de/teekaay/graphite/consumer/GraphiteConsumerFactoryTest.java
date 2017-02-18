@@ -1,5 +1,6 @@
-package de.teekaay.graphite;
+package de.teekaay.graphite.consumer;
 
+import de.teekaay.graphite.IGraphiteConsumer;
 import de.teekaay.graphite.consumer.GraphiteConsumerFactory;
 import de.teekaay.graphite.consumer.HttpConsumer;
 import org.junit.Test;
